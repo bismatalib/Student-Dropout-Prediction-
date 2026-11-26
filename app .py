@@ -206,7 +206,10 @@ if go:
                 "Stayed (avg)": [5.69, 12.19, 5.58, 12.22],
                 "Dropped out (avg)": [2.53, 7.28, 1.95, 5.97],
             }, index=["1st sem units", "1st sem grade", "2nd sem units", "2nd sem grade"])
-            st.bar_chart(df_cmp, color=["#2563eb", "#16a34a", "#dc2626"])
+            try:
+                st.bar_chart(df_cmp, color=["#2563eb", "#16a34a", "#dc2626"], stack=False)
+            except TypeError:
+                st.bar_chart(df_cmp, color=["#2563eb", "#16a34a", "#dc2626"])
 
     with st.expander("🔍 View technical details (for advanced users)"):
         st.write("Inputs sent to the model (all other features use typical values):")
